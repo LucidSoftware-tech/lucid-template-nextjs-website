@@ -23,7 +23,7 @@
     --border: 0 0% 90%;
     --input: 0 0% 90%;
     --ring: 0 0% 10%;
-    --radius: 0.3rem; 
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -53,11 +53,12 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground text-sm antialiased font-[family-name:Inter,sans-serif];
+  html {
+    scroll-behavior: smooth;
   }
-  
-  /* Dense styles for layout components */
+  body {
+    @apply bg-background text-foreground text-sm antialiased;
+  }
   h1, h2, h3, h4, h5, h6 {
     @apply font-medium tracking-tight;
   }

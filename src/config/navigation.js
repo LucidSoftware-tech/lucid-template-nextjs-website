@@ -1,17 +1,17 @@
 export const navigationConfig = [
   {
-    title: "Dashboard",
-    href: "/dashboard",
-    icon: "dashboard",
+    title: "Home",
+    href: "/",
+    icon: "home",
   },
   {
-    title: "Users",
-    href: "/users",
+    title: "About",
+    href: "/about",
     icon: "users",
   },
   {
-    title: "Settings",
-    href: "/settings",
-    icon: "settings",
-  }
+    title: "Contact",
+    href: "/contact",
+    icon: "mail",
+  },
 ];

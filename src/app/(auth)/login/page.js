@@ -29,7 +29,7 @@ export default function LoginPage() {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(loginSchema),
-    defaultValues: { email: "a", password: "a" },
+    defaultValues: { email: "admin@example.com", password: "password" },
   });
 
   const onSubmit = async (data) => {
@@ -37,7 +37,7 @@ export default function LoginPage() {
       setError("");
       const response = await authService.login(data);
       setAuth(response.user, response.token);
-      router.push("/dashboard");
+      router.push("/");
     } catch (err) {
       setError(err?.message || "Login failed");
     }

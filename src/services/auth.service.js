@@ -3,7 +3,7 @@ import { apiClient } from "@/lib/api-client";
 const mockUser = {
   id: "1",
   name: "Admin User",
-  email: "a",
+  email: "admin@example.com",
   avatar: null,
 };
 
@@ -16,7 +16,7 @@ export const authService = {
     // MOCK:
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (credentials.email === "a" && credentials.password === "a") {
+        if (credentials.email === "admin@example.com" && credentials.password === "password") {
           resolve({ user: mockUser, token: "mock-jwt-token" });
         } else {
           reject(new Error("Invalid credentials"));

@@ -3,6 +3,17 @@ import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Icons } from "@/config/icons";
 
+const teamMembers = [
+  { name: "Jane Smith", role: "CEO & Co-Founder", bio: "Passionate about building tools that empower teams to ship faster and more confidently." },
+  { name: "Alex Johnson", role: "CTO & Co-Founder", bio: "Full-stack engineer obsessed with clean architecture, performance, and developer experience." },
+  { name: "Sam Williams", role: "Head of Design", bio: "Believes great design is invisible. Focused on creating intuitive, beautiful interfaces." },
+];
+
+export const metadata = {
+  title: "About",
+  description: `Learn more about the team and mission behind ${siteConfig.name}.`,
+};
+
 export default function AboutPage() {
   return (
     <div className="w-full">
@@ -11,12 +22,11 @@ export default function AboutPage() {
         <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6">
-            Building the foundation of modern <span className="text-primary">software</span>
+            We build tools that <span className="text-primary">matter</span>
           </h1>
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground sm:text-xl leading-relaxed">
-            At {siteConfig.name}, we believe that every great product starts with a solid foundation. 
-            Our mission is to empower developers and entrepreneurs to build exceptional applications without 
-            reinventing the mechanics of standard boilerplate.
+            {siteConfig.name} was founded on a simple belief: developers deserve better starting points.
+            We create foundations that let you focus on what makes your product unique.
           </p>
         </div>
       </section>
@@ -29,21 +39,22 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold tracking-tight">Our Story</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
                 <p>
-                  It all started with a simple observation: we were spending weeks building the same features for every new project. 
-                  Authentication, dashboards, user management, and a design system.
+                  Every great product starts the same way — weeks spent on setup, configuration, and boilerplate before a single feature gets built.
                 </p>
                 <p>
-                  We knew there had to be a better way. We didn't want a heavy, bloated framework that forced us into obscure patterns. 
-                  We wanted standard React, standard Next.js, and standard Tailwind CSS, but perfectly orchestrated.
+                  We set out to change that. Not with a rigid framework, but with a clean, 
+                  modern template that follows industry best practices while staying flexible enough 
+                  to fit any vision.
                 </p>
                 <p>
-                  That's why we created {siteConfig.name}. An obsessively designed template focused on premium aesthetics and dense utility, letting you get straight to the code that matters.
+                  {siteConfig.name} is the result: a production-ready starting point that combines 
+                  thoughtful architecture with beautiful defaults, so you can ship your best work faster.
                 </p>
               </div>
             </div>
             <div className="relative rounded-2xl bg-muted/30 aspect-square sm:aspect-video lg:aspect-square overflow-hidden flex items-center justify-center border shadow-inner">
-               <div className="absolute inset-0 bg-primary/5"></div>
-               <Icons.settings className="h-32 w-32 text-primary/30" />
+               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
+               <Icons.home className="h-32 w-32 text-primary/20" />
             </div>
           </div>
         </div>
@@ -55,26 +66,22 @@ export default function AboutPage() {
           <div className="mb-16 text-center">
             <h2 className="text-3xl font-bold tracking-tight">Meet the Team</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our small, dedicated team obsessed with shipping excellent software quickly.
+              A small, focused team dedicated to building excellent software.
             </p>
           </div>
           
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((member) => (
-              <div key={member} className="group relative rounded-2xl border bg-card p-6 shadow-sm hover:shadow-md transition-all">
-                <div className="mb-6 h-32 w-32 rounded-full bg-muted/50 mx-auto overflow-hidden ring-4 ring-background flex items-center justify-center">
-                  <Icons.users className="h-12 w-12 text-muted-foreground/50" />
+            {teamMembers.map((member) => (
+              <div key={member.name} className="group relative rounded-2xl border bg-card p-6 shadow-sm hover:shadow-md transition-all">
+                <div className="mb-6 h-24 w-24 rounded-full bg-muted/50 mx-auto overflow-hidden ring-4 ring-background flex items-center justify-center">
+                  <Icons.users className="h-10 w-10 text-muted-foreground/40" />
                 </div>
                 <div className="text-center">
-                  <h3 className="text-xl font-bold">John Doe</h3>
-                  <p className="text-primary font-medium text-sm mb-4">Co-Founder & CEO</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                    A serial builder who previously scaled multiple SaaS products from 0 to 1M ARR. Obsessed with high-performance UI.
+                  <h3 className="text-xl font-bold">{member.name}</h3>
+                  <p className="text-primary font-medium text-sm mb-4">{member.role}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {member.bio}
                   </p>
-                  <div className="flex justify-center space-x-3 text-muted-foreground">
-                     {/* Dummy social links */}
-                     <Link href="#" className="hover:text-foreground transition-colors"><Icons.mail className="h-4 w-4" /></Link>
-                  </div>
                 </div>
               </div>
             ))}
@@ -85,13 +92,13 @@ export default function AboutPage() {
       {/* CTA Bottom Section */}
       <section className="py-24 bg-primary text-primary-foreground text-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Want to see what we've built?</h2>
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Ready to build something great?</h2>
           <p className="text-primary-foreground/80 text-lg mb-8">
-            Experience the standard of our templates starting today.
+            Get in touch and let&apos;s discuss how we can help you ship faster.
           </p>
-          <Link href="/">
-            <Button size="lg" variant="secondary" className="rounded-full px-8 text-primary font-semibold">
-              Go to Home <Icons.chevronRight className="ml-2 h-4 w-4" />
+          <Link href="/contact">
+            <Button size="lg" variant="secondary" className="rounded-full px-8 font-semibold">
+              Contact Us <Icons.chevronRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>

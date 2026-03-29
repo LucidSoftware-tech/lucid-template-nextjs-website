@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 export const Avatar = forwardRef(({ className, src, fallback, size = "md", ...props }, ref) => {
@@ -19,7 +20,7 @@ export const Avatar = forwardRef(({ className, src, fallback, size = "md", ...pr
       {...props}
     >
       {src ? (
-        <img src={src} alt="Avatar" className="aspect-square h-full w-full object-cover" />
+        <Image src={src} alt="Avatar" fill className="object-cover" />
       ) : (
         <div className="flex h-full w-full items-center justify-center rounded-full bg-muted font-medium text-muted-foreground uppercase">
           {fallback || "U"}

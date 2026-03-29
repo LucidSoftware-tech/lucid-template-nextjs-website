@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Icons } from "@/config/icons";
-import { Input, Textarea } from "@/components/ui";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 
 export default function ContactPage() {
@@ -27,7 +28,7 @@ export default function ContactPage() {
       <section className="pt-24 pb-12 sm:pt-32 sm:pb-16 text-center px-4">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Get in touch</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          We're here to help and answer any question you might have. We look forward to hearing from you.
+          We&apos;re here to help and answer any question you might have. We look forward to hearing from you.
         </p>
       </section>
 
@@ -68,7 +69,7 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold mb-4">Frequently Asked Questions</h3>
               <div className="space-y-4 text-sm text-muted-foreground">
                 <p><strong className="text-foreground">Can I use this for multiple projects?</strong><br/>Yes, the standard license allows an unlimited number of personal projects.</p>
-                <p><strong className="text-foreground">Do you offer refunds?</strong><br/>We offer a 14-day money-back guarantee if you're unhappy.</p>
+                <p><strong className="text-foreground">Do you offer refunds?</strong><br/>We offer a 14-day money-back guarantee if you&apos;re unhappy.</p>
               </div>
             </div>
           </div>
@@ -109,7 +110,7 @@ export default function ContactPage() {
               {isSuccess && (
                 <div className="mt-4 p-3 rounded-md bg-green-500/10 text-green-600 text-sm font-medium flex items-center border border-green-500/20">
                   <span className="flex h-5 w-5 rounded-full bg-green-500 items-center justify-center text-white mr-2 text-xs">✓</span>
-                  Message sent successfully! We'll be in touch soon.
+                  Message sent successfully! We&apos;ll be in touch soon.
                 </div>
               )}
             </form>
