@@ -38,16 +38,16 @@ export function MarketingHeader() {
         </Link>
         
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</Link>
-          <Link href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">How it Works</Link>
-          <Link href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">Testimonials</Link>
+          <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">About Us</Link>
+          <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
+          <Link href="/#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</Link>
         </nav>
 
         <div className="flex items-center gap-4">
           <Link href="/login" className="hidden sm:inline-block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Sign In
           </Link>
-          <Link href="/dashboard">
+          <Link href="/contact">
             <Button size="sm" className="rounded-full px-5">Get Started <Icons.chevronRight className="ml-1 h-3 w-3" /></Button>
           </Link>
         </div>

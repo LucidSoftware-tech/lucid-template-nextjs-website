@@ -26,7 +26,7 @@ export default function LandingPage() {
             Stop building boilerplate and start building your product.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Link href="/dashboard" className="w-full sm:w-auto">
+            <Link href="/contact" className="w-full sm:w-auto">
               <Button size="lg" className="w-full sm:w-auto rounded-full px-8 text-base h-12">
                 Start Building Free <Icons.chevronRight className="ml-2 h-4 w-4" />
               </Button>
@@ -105,9 +105,9 @@ export default function LandingPage() {
           <p className="mt-4 text-lg text-primary-foreground/80 max-w-xl mx-auto mb-8">
             Start generating full-stack SaaS project templates instantly. Stop rewriting the same setup over and over.
           </p>
-          <Link href="/dashboard">
+          <Link href="/contact">
             <Button size="lg" variant="secondary" className="rounded-full px-8 font-semibold text-primary h-12">
-              Launch Dashboard Workspace
+              Start Your Project Today
             </Button>
           </Link>
         </div>

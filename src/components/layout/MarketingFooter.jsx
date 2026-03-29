@@ -28,9 +28,9 @@ export function MarketingFooter() {
           <div>
             <h3 className="text-sm font-semibold tracking-wider">Product</h3>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li><Link href="#features" className="hover:text-foreground transition-colors">Features</Link></li>
-              <li><Link href="#" className="hover:text-foreground transition-colors">Integrations</Link></li>
-              <li><Link href="#" className="hover:text-foreground transition-colors">Pricing</Link></li>
+              <li><Link href="/#features" className="hover:text-foreground transition-colors">Features</Link></li>
+              <li><Link href="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-foreground transition-colors">Contact Support</Link></li>
               <li><Link href="#" className="hover:text-foreground transition-colors">Changelog</Link></li>
             </ul>
           </div>

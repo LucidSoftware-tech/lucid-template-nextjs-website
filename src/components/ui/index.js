@@ -4,6 +4,7 @@ export * from "./Card";
 export * from "./Badge";
 export * from "./Avatar";
 export * from "./Table";
+export * from "./Textarea";
 export * from "./Modal";
 export * from "./Pagination";
 export * from "./EmptyState";
