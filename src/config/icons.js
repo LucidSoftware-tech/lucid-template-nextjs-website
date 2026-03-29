@@ -1,5 +1,6 @@
 import { 
   Home, 
+  LayoutGrid,
   Users, 
   Settings, 
   LogOut, 
@@ -20,6 +21,7 @@ import {
 
 export const Icons = {
   home: Home,
+  dashboard: LayoutGrid,
   users: Users,
   settings: Settings,
   logout: LogOut,

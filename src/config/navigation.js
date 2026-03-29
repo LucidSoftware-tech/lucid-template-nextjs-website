@@ -2,7 +2,7 @@ export const navigationConfig = [
   {
     title: "Dashboard",
     href: "/dashboard",
-    icon: "home",
+    icon: "dashboard",
   },
   {
     title: "Users",

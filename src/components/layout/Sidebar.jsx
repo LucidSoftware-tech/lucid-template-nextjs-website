@@ -46,7 +46,7 @@ export function Sidebar({ className }) {
           className
         )}
       >
-        <div className="flex h-14 items-center justify-between border-b px-4 lg:justify-center">
+        <div className="flex h-14 items-center justify-between border-b px-4 lg:justify-start">
           <Link href="/dashboard" className="flex items-center gap-2 font-bold tracking-tight">
             <div className="flex h-6 w-6 items-center justify-center rounded bg-primary text-primary-foreground text-xs">
               {siteConfig.logoText[0]}
@@ -61,7 +61,7 @@ export function Sidebar({ className }) {
           </button>
         </div>
 
-        <nav className="flex-1 space-y-1 p-4">
+        <nav className="flex-1 space-y-1 px-2 pt-2">
           {navigationConfig.map((item) => {
             const Icon = Icons[item.icon];
             const isActive = pathname.startsWith(item.href);
