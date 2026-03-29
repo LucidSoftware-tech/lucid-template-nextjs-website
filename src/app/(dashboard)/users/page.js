@@ -14,7 +14,7 @@ export default function UsersPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearch = useDebounce(searchTerm, 500);
   
-  const { data, isLoading } = useUsers({ search: debouncedSearch });
+  const { data, isPending } = useUsers({ search: debouncedSearch });
   const deleteMutation = useDeleteUser();
 
   const handleDelete = async (id) => {
@@ -83,7 +83,7 @@ export default function UsersPage() {
       </div>
 
       <div className="rounded-md border bg-card">
-        {isLoading ? (
+        {isPending ? (
           <div className="flex justify-center p-8">
             <Icons.spinner className="h-6 w-6 animate-spin text-muted-foreground" />
           </div>

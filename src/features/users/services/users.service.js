@@ -14,13 +14,19 @@ export const usersService = {
     // return res.data;
 
     // MOCK:
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
+      console.log("usersService.getAll called with params:", params);
       setTimeout(() => {
-        let data = [...mockUsers];
-        if (params?.search) {
-          data = data.filter(u => u.name.toLowerCase().includes(params.search.toLowerCase()) || u.email.toLowerCase().includes(params.search.toLowerCase()));
+        try {
+          let data = [...mockUsers];
+          if (params?.search) {
+            data = data.filter(u => u.name.toLowerCase().includes(params.search.toLowerCase()) || u.email.toLowerCase().includes(params.search.toLowerCase()));
+          }
+          resolve({ data, total: data.length });
+        } catch (error) {
+          console.error("Error in mock usersService.getAll:", error);
+          reject(error);
         }
-        resolve({ data, total: data.length });
       }, 500);
     });
   },
