@@ -7,7 +7,7 @@
 ## Stack
 
 - **Framework**: Next.js 14 (App Router) / React 18
-- **Styling**: Tailwind CSS 3.4 + HSL CSS variables (shadcn/ui-compatible design tokens)
+- **Styling**: Tailwind CSS 3.4 + HSL CSS variables + shadcn/ui (initialized, 13 components installed)
 - **State**: Zustand 4.5 (with `persist` middleware)
 - **Data fetching**: TanStack React Query v5
 - **Forms**: React Hook Form 7.51 + Zod 3.23 (via `@hookform/resolvers`)
@@ -356,7 +356,7 @@ import { Icons } from '@/config/icons';
 ## Providers
 
 **File**: `src/components/Providers.jsx`
-**Wraps**: `QueryClientProvider` (TanStack React Query)
+**Wraps**: `QueryClientProvider` (TanStack React Query) → `TooltipProvider` (shadcn)
 **Config**: `staleTime: 60s`, `retry: 1`
 **Usage**: Already wrapping `{children}` in root layout — do NOT rewrap.
 
@@ -550,19 +550,175 @@ container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } }
 
 ---
 
-## shadcn/ui Compatibility
+## shadcn/ui Components (Installed)
 
-**Verdict: YES — this template is fully shadcn/ui-compatible and benefits greatly from it.**
+**Status**: Initialized and configured via `components.json`.
+**Config**: `components.json` at project root (style: `base-nova`, tsx: false, cssVariables: true)
+**Add more**: `npx shadcn@latest add <component-name> -y`
 
-This template was deliberately designed with shadcn/ui conventions:
-- ✅ Same HSL CSS variable system (`--primary`, `--background`, etc.)
-- ✅ Same `cn()` utility (`clsx` + `tailwind-merge`)
-- ✅ Same Tailwind config structure (colors reference CSS vars)
-- ✅ Same component patterns (`forwardRef`, `className` prop, variant objects)
-- ✅ `@/*` import alias already configured
+All shadcn components are in `src/components/ui/` (lowercase filenames) and barrel-exported from `index.js`.
 
-**Recommended shadcn components to add** (not covered by existing UI):
-`Select`, `DropdownMenu`, `Tabs`, `Sheet`, `Tooltip`, `Separator`, `Label`, `Switch`, `Checkbox`, `RadioGroup`, `Accordion`, `AlertDialog`, `Toast/Sonner`, `Skeleton`, `ScrollArea`, `Command`, `Popover`
+### Accordion
+**File**: `src/components/ui/accordion.jsx`
+**Exports**: `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent`
+```jsx
+<Accordion>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Section title</AccordionTrigger>
+    <AccordionContent>Content here</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### AlertDialog
+**File**: `src/components/ui/alert-dialog.jsx`
+**Exports**: `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogAction`, `AlertDialogCancel`, `AlertDialogMedia`, `AlertDialogOverlay`, `AlertDialogPortal`
+```jsx
+<AlertDialog>
+  <AlertDialogTrigger><Button>Delete</Button></AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+### Checkbox
+**File**: `src/components/ui/checkbox.jsx`
+**Exports**: `Checkbox`
+```jsx
+<Checkbox id="terms" />
+<Label htmlFor="terms">Accept terms</Label>
+```
+
+### DropdownMenu
+**File**: `src/components/ui/dropdown-menu.jsx`
+**Exports**: `DropdownMenu`, `DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem`, `DropdownMenuLabel`, `DropdownMenuSeparator`, `DropdownMenuGroup`, `DropdownMenuSub`, `DropdownMenuSubTrigger`, `DropdownMenuSubContent`, `DropdownMenuCheckboxItem`, `DropdownMenuRadioGroup`, `DropdownMenuRadioItem`, `DropdownMenuShortcut`, `DropdownMenuPortal`
+```jsx
+<DropdownMenu>
+  <DropdownMenuTrigger><Button variant="outline">Open</Button></DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>Edit</DropdownMenuItem>
+    <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+### Label
+**File**: `src/components/ui/label.jsx`
+**Exports**: `Label`
+```jsx
+<Label htmlFor="email">Email</Label>
+```
+
+### ScrollArea
+**File**: `src/components/ui/scroll-area.jsx`
+**Exports**: `ScrollArea`, `ScrollBar`
+```jsx
+<ScrollArea className="h-72 w-48">
+  {items.map(item => <div key={item}>{item}</div>)}
+</ScrollArea>
+```
+
+### Select
+**File**: `src/components/ui/select.jsx`
+**Exports**: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, `SelectGroup`, `SelectLabel`, `SelectSeparator`, `SelectScrollUpButton`, `SelectScrollDownButton`
+```jsx
+<Select defaultValue="apple">
+  <SelectTrigger>
+    <SelectValue placeholder="Select fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana">Banana</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Separator
+**File**: `src/components/ui/separator.jsx`
+**Exports**: `Separator`
+```jsx
+<Separator />
+<Separator orientation="vertical" />
+```
+
+### Sheet
+**File**: `src/components/ui/sheet.jsx`
+**Exports**: `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetFooter`, `SheetTitle`, `SheetDescription`, `SheetClose`
+**Props**: `SheetContent` accepts `side` (`top` | `right` | `bottom` | `left`)
+```jsx
+<Sheet>
+  <SheetTrigger><Button>Open</Button></SheetTrigger>
+  <SheetContent side="right">
+    <SheetHeader>
+      <SheetTitle>Panel Title</SheetTitle>
+      <SheetDescription>Description text</SheetDescription>
+    </SheetHeader>
+    {/* Content */}
+  </SheetContent>
+</Sheet>
+```
+
+### Skeleton
+**File**: `src/components/ui/skeleton.jsx`
+**Exports**: `Skeleton`
+```jsx
+<Skeleton className="h-4 w-[250px]" />
+<Skeleton className="h-12 w-12 rounded-full" />
+```
+
+### Switch
+**File**: `src/components/ui/switch.jsx`
+**Exports**: `Switch`
+```jsx
+<Switch id="notifications" />
+<Label htmlFor="notifications">Enable notifications</Label>
+```
+
+### Tabs
+**File**: `src/components/ui/tabs.jsx`
+**Exports**: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`
+```jsx
+<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Account settings here.</TabsContent>
+  <TabsContent value="settings">App settings here.</TabsContent>
+</Tabs>
+```
+
+### Tooltip
+**File**: `src/components/ui/tooltip.jsx`
+**Exports**: `Tooltip`, `TooltipTrigger`, `TooltipContent`, `TooltipProvider`
+**Note**: `TooltipProvider` is already wrapped in `Providers.jsx`
+```jsx
+<Tooltip>
+  <TooltipTrigger><Button variant="ghost" size="icon"><Icons.settings /></Button></TooltipTrigger>
+  <TooltipContent>Settings</TooltipContent>
+</Tooltip>
+```
+
+### Adding more shadcn components
+```bash
+npx shadcn@latest add <component-name> -y
+# Examples:
+npx shadcn@latest add radio-group -y
+npx shadcn@latest add toast -y
+npx shadcn@latest add popover -y
+npx shadcn@latest add command -y
+```
+New components auto-install to `src/components/ui/` and import from `@/lib/cn`.
 
 ---
 
@@ -572,6 +728,7 @@ This template was deliberately designed with shadcn/ui conventions:
 ```
 .eslintrc.json
 .gitignore
+components.json
 jsconfig.json
 next.config.mjs
 package.json
@@ -579,9 +736,10 @@ pnpm-lock.yaml
 postcss.config.js
 tailwind.config.js
 vercel.json
+TEMPLATE_MANIFEST.md
 ```
 
-### Source Files
+### Source Files — Custom
 ```
 src/middleware.js
 src/app/globals.css
@@ -618,9 +776,27 @@ src/hooks/useLocalStorage.js
 src/hooks/usePagination.js
 src/lib/api-client.js
 src/lib/cn.js
+src/lib/utils.js
 src/services/auth.service.js
 src/store/auth.store.js
 src/store/index.js
+```
+
+### Source Files — shadcn/ui
+```
+src/components/ui/accordion.jsx
+src/components/ui/alert-dialog.jsx
+src/components/ui/checkbox.jsx
+src/components/ui/dropdown-menu.jsx
+src/components/ui/label.jsx
+src/components/ui/scroll-area.jsx
+src/components/ui/select.jsx
+src/components/ui/separator.jsx
+src/components/ui/sheet.jsx
+src/components/ui/skeleton.jsx
+src/components/ui/switch.jsx
+src/components/ui/tabs.jsx
+src/components/ui/tooltip.jsx
 ```
 
 ### Public Assets
@@ -636,6 +812,7 @@ public/.gitkeep
 lucid-template-nextjs-website/
 ├── .eslintrc.json
 ├── .gitignore
+├── components.json              ← shadcn/ui config
 ├── jsconfig.json
 ├── next.config.mjs
 ├── package.json
@@ -663,23 +840,36 @@ lucid-template-nextjs-website/
     │           ├── layout.js      ← Contact metadata
     │           └── page.js        ← Contact form + FAQ
     ├── components/
-    │   ├── Providers.jsx          ← QueryClientProvider
+    │   ├── Providers.jsx          ← QueryClient + TooltipProvider
     │   ├── layout/
     │   │   ├── MarketingHeader.jsx
     │   │   └── MarketingFooter.jsx
     │   └── ui/
-    │       ├── index.js           ← Barrel export
-    │       ├── Avatar.jsx
-    │       ├── Badge.jsx
-    │       ├── Button.jsx
-    │       ├── Card.jsx
-    │       ├── EmptyState.jsx
-    │       ├── Input.jsx
-    │       ├── Modal.jsx
-    │       ├── Pagination.jsx
-    │       ├── Spinner.jsx
-    │       ├── Table.jsx
-    │       └── Textarea.jsx
+    │       ├── index.js           ← Barrel export (all custom + shadcn)
+    │       ├── Avatar.jsx         ── Custom
+    │       ├── Badge.jsx          ── Custom
+    │       ├── Button.jsx         ── Custom
+    │       ├── Card.jsx           ── Custom
+    │       ├── EmptyState.jsx     ── Custom
+    │       ├── Input.jsx          ── Custom
+    │       ├── Modal.jsx          ── Custom
+    │       ├── Pagination.jsx     ── Custom
+    │       ├── Spinner.jsx        ── Custom
+    │       ├── Table.jsx          ── Custom
+    │       ├── Textarea.jsx       ── Custom
+    │       ├── accordion.jsx      ── shadcn/ui
+    │       ├── alert-dialog.jsx   ── shadcn/ui
+    │       ├── checkbox.jsx       ── shadcn/ui
+    │       ├── dropdown-menu.jsx  ── shadcn/ui
+    │       ├── label.jsx          ── shadcn/ui
+    │       ├── scroll-area.jsx    ── shadcn/ui
+    │       ├── select.jsx         ── shadcn/ui
+    │       ├── separator.jsx      ── shadcn/ui
+    │       ├── sheet.jsx          ── shadcn/ui
+    │       ├── skeleton.jsx       ── shadcn/ui
+    │       ├── switch.jsx         ── shadcn/ui
+    │       ├── tabs.jsx           ── shadcn/ui
+    │       └── tooltip.jsx        ── shadcn/ui
     ├── config/
     │   ├── icons.js
     │   ├── navigation.js
@@ -691,7 +881,8 @@ lucid-template-nextjs-website/
     │   └── usePagination.js
     ├── lib/
     │   ├── api-client.js
-    │   └── cn.js
+    │   ├── cn.js                  ← Primary utility (clsx + tw-merge)
+    │   └── utils.js               ← shadcn alias → same as cn.js
     ├── services/
     │   └── auth.service.js
     └── store/
